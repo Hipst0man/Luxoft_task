@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>Images/photo-1569982175971-d92b01cf8694.jpg</file>
+        <file>Images/Black_Star.svg.png</file>
+        <file>Images/icon-ios7-contact-512.png</file>
+    </qresource>
+</RCC>
