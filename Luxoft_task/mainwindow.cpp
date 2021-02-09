@@ -61,8 +61,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->callButt,SIGNAL(clicked()),this,SLOT(makeCall()));
     connect(ui->favButt,SIGNAL(clicked()),this,SLOT(addFav()));
     connect(ui->search, SIGNAL(textEdited(const QString &)), this, SLOT(search(const QString &)));
-    connect(ui->actionGrid, SIGNAL(triggered()), this, SLOT(toGrid()));
-    connect(ui->actionList, SIGNAL(triggered()), this, SLOT(toList()));
+    connect(ui->actionGrid, SIGNAL(triggered()), this, SLOT(ChangeView()));
 
     fav = new Favorites(this);
 }
@@ -109,18 +108,23 @@ void MainWindow::search(const QString &)
 
 }
 
-void MainWindow::toGrid()
+void MainWindow::ChangeView()
 {
-    ui->listWidget->setFlow(QListView::LeftToRight);
-    ui->listWidget->setResizeMode(QListView::Adjust);
-    ui->listWidget->setGridSize(QSize().scaled(100,100,Qt::KeepAspectRatio));
-    ui->listWidget->setViewMode(QListView::IconMode);
-}
 
-void MainWindow::toList()
-{
-    ui->listWidget->setFlow(QListView::TopToBottom);
-    ui->listWidget->setResizeMode(QListView::Adjust);
-    ui->listWidget->setGridSize(QSize().scaled(100,60,Qt::KeepAspectRatio));
-    ui->listWidget->setViewMode(QListView::ListMode);
+    if(ui->listWidget->viewMode() == QListView::ListMode)
+    {
+        ui->listWidget->setFlow(QListView::LeftToRight);
+        ui->listWidget->setResizeMode(QListView::Adjust);
+        ui->listWidget->setGridSize(QSize().scaled(100,100,Qt::KeepAspectRatio));
+        ui->listWidget->setViewMode(QListView::IconMode);
+        ui->listWidget->setDragEnabled(false);
+    }
+
+    else
+    {
+        ui->listWidget->setFlow(QListView::TopToBottom);
+        ui->listWidget->setResizeMode(QListView::Adjust);
+        ui->listWidget->setGridSize(QSize().scaled(100,60,Qt::KeepAspectRatio));
+        ui->listWidget->setViewMode(QListView::ListMode);
+    }
 }
