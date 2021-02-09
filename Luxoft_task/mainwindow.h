@@ -21,8 +21,7 @@ private slots:
     void makeCall();
     void on_actionFavorites_list_triggered();
     void search(const QString &);
-    void toGrid();
-    void toList();
+    void ChangeView();
 
 private:
     Ui::MainWindow* ui;
