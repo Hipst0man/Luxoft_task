@@ -29,7 +29,6 @@ class Ui_MainWindow
 {
 public:
     QAction *actionFavorites_list;
-    QAction *actionList;
     QAction *actionGrid;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
@@ -58,10 +57,9 @@ public:
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/Images/Black_Star.svg.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionFavorites_list->setIcon(icon);
-        actionList = new QAction(MainWindow);
-        actionList->setObjectName(QString::fromUtf8("actionList"));
         actionGrid = new QAction(MainWindow);
         actionGrid->setObjectName(QString::fromUtf8("actionGrid"));
+        actionGrid->setCheckable(true);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         sizePolicy.setHeightForWidth(centralwidget->sizePolicy().hasHeightForWidth());
@@ -132,8 +130,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         actionFavorites_list->setText(QCoreApplication::translate("MainWindow", "Favorites list", nullptr));
-        actionList->setText(QCoreApplication::translate("MainWindow", "List", nullptr));
-        actionGrid->setText(QCoreApplication::translate("MainWindow", "Change View", nullptr));
+        actionGrid->setText(QCoreApplication::translate("MainWindow", "Grid View", nullptr));
         callButt->setText(QCoreApplication::translate("MainWindow", "Make Call", nullptr));
         favButt->setText(QCoreApplication::translate("MainWindow", "Add to Fav", nullptr));
         menuContacts->setTitle(QCoreApplication::translate("MainWindow", "Contacts", nullptr));
